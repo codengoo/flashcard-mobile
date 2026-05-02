@@ -1,19 +1,23 @@
+import 'package:flashcard/domain/models/flashcard.dart';
 import 'package:flashcard/ui/core/themes/colors.dart';
-import 'package:flashcard/ui/features/study/view_models/study_view_model.dart';
-import 'package:flashcard/ui/features/study/views/widgets/card_top_bar.dart';
 import 'package:flashcard/ui/features/study/views/widgets/rating_buttons.dart';
 import 'package:flashcard/ui/features/study/views/widgets/review_again_button.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class CardBackContent extends StatelessWidget {
-  const CardBackContent({super.key, required this.isReview});
+  const CardBackContent({
+    super.key,
+    required this.card,
+    required this.isReview,
+    required this.onRate,
+  });
 
+  final Flashcard card;
   final bool isReview;
+  final Future<void> Function(int) onRate;
 
   @override
   Widget build(BuildContext context) {
-    final vm = context.watch<StudyViewModel>();
     final textColor = isReview ? Colors.white : AppColors.textPrimary;
 
     return Padding(
@@ -21,15 +25,13 @@ class CardBackContent extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: 100),
-          CardTopBar(isReview: isReview),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  vm.currentCard.definition,
+                  card.definition,
                   style: TextStyle(
                     fontSize: 36,
                     fontWeight: FontWeight.w800,
@@ -47,7 +49,7 @@ class CardBackContent extends StatelessWidget {
               children: [
                 RatingButtons(
                   isReview: isReview,
-                  onRate: (mp) => context.read<StudyViewModel>().rate(mp),
+                  onRate: onRate,
                 ),
                 const SizedBox(height: 14),
                 Row(

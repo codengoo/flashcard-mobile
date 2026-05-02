@@ -37,6 +37,15 @@ class StudyViewModel extends ChangeNotifier {
       _reviewAgainIds.contains(currentCard.id);
   bool get canGoBack => _currentIndex > 0;
 
+  bool isReviewAgainForCard(String id) => _reviewAgainIds.contains(id);
+
+  void setIndex(int index) {
+    if (index < 0 || index >= _cards.length) return;
+    _currentIndex = index;
+    _cardSide = CardSide.front;
+    notifyListeners();
+  }
+
   void _init() {
     _deck = _deckRepository.getDeck();
     _cards = _deckRepository.getCards(_deck.id);
