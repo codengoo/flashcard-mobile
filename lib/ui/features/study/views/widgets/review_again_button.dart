@@ -1,6 +1,7 @@
 import 'package:flashcard/ui/features/study/view_models/study_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
 
 class ReviewAgainButton extends StatelessWidget {
   const ReviewAgainButton({super.key, required this.isReview});
@@ -26,7 +27,7 @@ class ReviewAgainButton extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Icon(
-              isReview ? Icons.bookmark : Icons.bookmark_border,
+              isReview ? TablerIcons.bookmarks : TablerIcons.bookmark,
               size: 14,
               color: isReview
                   ? Colors.white

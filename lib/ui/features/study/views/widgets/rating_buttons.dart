@@ -1,5 +1,6 @@
 import 'package:flashcard/ui/core/themes/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
 
 class RatingButtons extends StatelessWidget {
   const RatingButtons({
@@ -17,17 +18,17 @@ class RatingButtons extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         IconRatingButton(
-          icon: Icons.thumb_up_outlined,
+          icon: TablerIcons.thumb_up,
           color: isReview ? Colors.white70 : AppColors.ratingYeah,
           onTap: () => onRate(10),
         ),
         IconRatingButton(
-          icon: Icons.thumb_down_outlined,
+          icon: TablerIcons.thumb_down,
           color: isReview ? Colors.white70 : AppColors.ratingNah,
           onTap: () => onRate(0),
         ),
         IconRatingButton(
-          icon: Icons.priority_high_rounded,
+          icon: TablerIcons.exclamation_mark,
           color: isReview ? Colors.white70 : AppColors.ratingABit,
           onTap: () => onRate(5),
         ),

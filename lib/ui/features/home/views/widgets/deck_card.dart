@@ -1,5 +1,6 @@
 import 'package:flashcard/ui/core/themes/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
 
 class DeckCard extends StatelessWidget {
   const DeckCard({
@@ -34,7 +35,7 @@ class DeckCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(14),
               ),
               child: const Icon(
-                Icons.style_rounded,
+                TablerIcons.cards,
                 color: AppColors.primary,
                 size: 28,
               ),
@@ -58,7 +59,7 @@ class DeckCard extends StatelessWidget {
               ),
             ),
             const Icon(
-              Icons.arrow_forward_ios_rounded,
+              TablerIcons.chevron_right,
               size: 16,
               color: AppColors.textHint,
             ),

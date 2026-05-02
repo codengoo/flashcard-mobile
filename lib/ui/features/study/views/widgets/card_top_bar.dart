@@ -1,6 +1,7 @@
 import 'package:flashcard/ui/features/study/view_models/study_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
 
 class CardTopBar extends StatelessWidget {
   const CardTopBar({super.key, required this.isReview});

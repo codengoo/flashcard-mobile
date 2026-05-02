@@ -1,6 +1,7 @@
 import 'package:flashcard/ui/core/themes/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
 import '../view_models/profile_view_model.dart';
 
 class ProfileView extends StatelessWidget {
@@ -111,7 +112,7 @@ class _MpRow extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Icon(Icons.circle, color: AppColors.mpGold, size: 14),
+        const Icon(TablerIcons.circle_filled, color: AppColors.mpGold, size: 14),
         const SizedBox(width: 6),
         Text(
           '$mp MP',
@@ -188,7 +189,7 @@ class _MenuItem extends StatelessWidget {
               ),
             ),
             const Icon(
-              Icons.arrow_forward_ios_rounded,
+              TablerIcons.chevron_right,
               size: 16,
               color: AppColors.textHint,
             ),

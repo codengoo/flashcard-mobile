@@ -1,9 +1,10 @@
 import 'package:flashcard/ui/core/themes/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 abstract final class AppTheme {
   static ThemeData get light {
-    return ThemeData(
+    final base = ThemeData(
       useMaterial3: true,
       colorScheme: ColorScheme.fromSeed(
         seedColor: AppColors.primary,
@@ -11,13 +12,13 @@ abstract final class AppTheme {
         surface: AppColors.background,
       ),
       scaffoldBackgroundColor: AppColors.background,
-      appBarTheme: const AppBarTheme(
+      appBarTheme: AppBarTheme(
         backgroundColor: AppColors.background,
         foregroundColor: AppColors.textPrimary,
         elevation: 0,
         scrolledUnderElevation: 0,
         centerTitle: true,
-        titleTextStyle: TextStyle(
+        titleTextStyle: GoogleFonts.lexendDeca(
           color: AppColors.textPrimary,
           fontSize: 16,
           fontWeight: FontWeight.w600,
@@ -37,34 +38,37 @@ abstract final class AppTheme {
           backgroundColor: AppColors.primary,
           foregroundColor: Colors.white,
           shape: const StadiumBorder(),
-          textStyle: const TextStyle(
+          textStyle: GoogleFonts.lexendDeca(
             fontWeight: FontWeight.w600,
             fontSize: 16,
           ),
         ),
       ),
-      textTheme: const TextTheme(
-        headlineLarge: TextStyle(
+    );
+
+    return base.copyWith(
+      textTheme: GoogleFonts.lexendDecaTextTheme(base.textTheme).copyWith(
+        headlineLarge: GoogleFonts.lexendDeca(
           fontSize: 28,
           fontWeight: FontWeight.w700,
           color: AppColors.textPrimary,
         ),
-        headlineMedium: TextStyle(
+        headlineMedium: GoogleFonts.lexendDeca(
           fontSize: 22,
           fontWeight: FontWeight.w700,
           color: AppColors.textPrimary,
         ),
-        titleLarge: TextStyle(
+        titleLarge: GoogleFonts.lexendDeca(
           fontSize: 18,
           fontWeight: FontWeight.w600,
           color: AppColors.textPrimary,
         ),
-        bodyLarge: TextStyle(
+        bodyLarge: GoogleFonts.lexendDeca(
           fontSize: 16,
           fontWeight: FontWeight.w400,
           color: AppColors.textPrimary,
         ),
-        bodyMedium: TextStyle(
+        bodyMedium: GoogleFonts.lexendDeca(
           fontSize: 14,
           fontWeight: FontWeight.w400,
           color: AppColors.textSecondary,

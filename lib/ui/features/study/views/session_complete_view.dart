@@ -1,6 +1,7 @@
 import 'package:flashcard/ui/core/themes/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
 import '../view_models/study_view_model.dart';
 
 class SessionCompleteView extends StatelessWidget {
@@ -22,7 +23,7 @@ class SessionCompleteView extends StatelessWidget {
               child: TextButton.icon(
                 onPressed: () => Navigator.of(context).maybePop(),
                 icon: const Icon(
-                  Icons.arrow_back_ios_new_rounded,
+                  TablerIcons.arrow_left,
                   size: 16,
                   color: AppColors.primary,
                 ),
@@ -91,7 +92,7 @@ class _SuccessCircle extends StatelessWidget {
         ],
       ),
       child: const Icon(
-        Icons.check_rounded,
+        TablerIcons.check,
         size: 48,
         color: AppColors.primary,
       ),
@@ -123,7 +124,7 @@ class _MpBadge extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           const Icon(
-            Icons.bolt_rounded,
+            TablerIcons.bolt,
             size: 16,
             color: AppColors.mpGold,
           ),

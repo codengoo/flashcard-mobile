@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
 import '../themes/colors.dart';
 
 class StudyAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -23,7 +24,7 @@ class StudyAppBar extends StatelessWidget implements PreferredSizeWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             SizedBox(width: 8),
-            Icon(Icons.arrow_back_ios_new_rounded, size: 18),
+            Icon(TablerIcons.arrow_left, size: 18),
             SizedBox(width: 2),
             Text(
               'Back',
@@ -49,7 +50,7 @@ class StudyAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         IconButton(
           icon: const Icon(
-            Icons.tune_rounded,
+            TablerIcons.adjustments_horizontal,
             color: AppColors.primary,
           ),
           onPressed: onSettingsTap,

@@ -10,6 +10,10 @@ dependencies:
   flutter:
     sdk: flutter
   provider: ^6.1.2
+  supabase_flutter: ^2.12.4
+  flutter_dotenv: ^6.0.1
+  flutter_tabler_icons: ^1.43.0
+  google_fonts: ^8.1.0
 
 dev_dependencies:
   flutter_test:
@@ -18,3 +22,5 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - .env

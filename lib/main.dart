@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'data/repositories/deck_repository.dart';
 import 'data/repositories/user_repository.dart';
@@ -8,7 +10,16 @@ import 'ui/features/home/views/home_view.dart';
 import 'ui/features/profile/view_models/profile_view_model.dart';
 import 'ui/features/study/view_models/study_view_model.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await dotenv.load(fileName: '.env');
+
+  await Supabase.initialize(
+    url: dotenv.env['SUPABASE_URL']!,
+    anonKey: dotenv.env['SUPABASE_ANON_KEY']!,
+  );
+
   runApp(const FlashcardApp());
 }
 

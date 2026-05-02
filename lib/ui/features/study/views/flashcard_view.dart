@@ -1,4 +1,4 @@
-﻿import 'dart:math' as math;
+import 'dart:math' as math;
 
 import 'package:flashcard/domain/models/flashcard.dart';
 import 'package:flutter/material.dart';
@@ -53,7 +53,7 @@ class _FlashcardViewState extends State<FlashcardView>
     super.dispose();
   }
 
-  // ── Flip ────────────────────────────────────────────────────────────────────
+  // -- Flip --------------------------------------------------------------------
   void _handleTap() {
     context.read<StudyViewModel>().flipCard();
     if (_showingBack) {
@@ -65,7 +65,7 @@ class _FlashcardViewState extends State<FlashcardView>
     }
   }
 
-  // ── Page-change from manual swipe ──────────────────────────────────────────
+  // -- Page-change from manual swipe ------------------------------------------
   void _onPageChanged(int index) {
     if (_navigatingFromRating) return;
     final vm = context.read<StudyViewModel>();
@@ -74,7 +74,7 @@ class _FlashcardViewState extends State<FlashcardView>
     setState(() => _showingBack = false);
   }
 
-  // ── Rating → auto-advance page ─────────────────────────────────────────────
+  // -- Rating ? auto-advance page ---------------------------------------------
   Future<void> _onRate(int mp) async {
     final vm = context.read<StudyViewModel>();
     final isLast = vm.currentIndex == vm.totalCards - 1;
@@ -116,7 +116,7 @@ class _FlashcardViewState extends State<FlashcardView>
           color: bgColor,
           child: Stack(
             children: [
-              // Decorations — fixed behind everything
+              // Decorations � fixed behind everything
               const Positioned(top: -30, right: -30, child: CornerOrb(size: 200)),
               const Positioned(bottom: 100, left: -40, child: CornerOrb(size: 160)),
               const Positioned(top: 200, right: -10, child: CornerDots()),
@@ -125,7 +125,7 @@ class _FlashcardViewState extends State<FlashcardView>
               SafeArea(
                 child: Column(
                   children: [
-                    // Fixed top bar — never flips or slides with cards
+                    // Fixed top bar � never flips or slides with cards
                     Padding(
                       padding: const EdgeInsets.fromLTRB(32, 48, 32, 8),
                       child: CardTopBar(isReview: isReview),
