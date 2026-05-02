@@ -21,7 +21,7 @@ class CardBackContent extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height: 12),
+          const SizedBox(height: 100),
           CardTopBar(isReview: isReview),
           Expanded(
             child: Column(

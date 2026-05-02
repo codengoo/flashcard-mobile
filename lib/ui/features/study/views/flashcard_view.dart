@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import '../view_models/study_view_model.dart';
 import 'session_complete_view.dart';
-import 'study_card_colors.dart';
+import '../constants/study_card_colors.dart';
 import 'widgets/card_back_content.dart';
 import 'widgets/card_decorations.dart';
 import 'widgets/card_front_content.dart';
@@ -34,6 +34,10 @@ class _FlashcardViewState extends State<FlashcardView>
   @override
   void initState() {
     super.initState();
+    SystemChrome.setEnabledSystemUIMode(
+      SystemUiMode.manual,
+      overlays: [SystemUiOverlay.bottom],
+    );
     _flipCtrl = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 400),
@@ -62,6 +66,7 @@ class _FlashcardViewState extends State<FlashcardView>
   void dispose() {
     _flipCtrl.dispose();
     _slideCtrl.dispose();
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
     super.dispose();
   }
 
@@ -80,7 +85,6 @@ class _FlashcardViewState extends State<FlashcardView>
     context.read<StudyViewModel>().goNext();
     _flipCtrl.reset();
     setState(() => _showingBack = false);
-    _slideCtrl.reset();
   }
 
   Future<void> _handleSwipeRight() async {
@@ -93,7 +97,6 @@ class _FlashcardViewState extends State<FlashcardView>
     vm.goBack();
     _flipCtrl.reset();
     setState(() => _showingBack = false);
-    _slideCtrl.reset();
   }
 
   @override
@@ -128,8 +131,16 @@ class _FlashcardViewState extends State<FlashcardView>
             color: bgColor,
             child: Stack(
               children: [
-                const Positioned(top: -30, right: -30, child: CornerOrb(size: 200)),
-                const Positioned(bottom: 100, left: -40, child: CornerOrb(size: 160)),
+                const Positioned(
+                  top: -30,
+                  right: -30,
+                  child: CornerOrb(size: 200),
+                ),
+                const Positioned(
+                  bottom: 100,
+                  left: -40,
+                  child: CornerOrb(size: 160),
+                ),
                 const Positioned(top: 200, right: -10, child: CornerDots()),
                 const Positioned(bottom: 220, left: 20, child: CornerDots()),
                 SafeArea(
