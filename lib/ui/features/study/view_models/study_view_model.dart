@@ -21,6 +21,7 @@ class StudyViewModel extends ChangeNotifier {
   CardSide _cardSide = CardSide.front;
   StudySessionState _sessionState = StudySessionState.studying;
   int _earnedMp = 0;
+  final Set<String> _reviewAgainIds = {};
 
   Deck get deck => _deck;
   List<Flashcard> get cards => _cards;
@@ -32,6 +33,9 @@ class StudyViewModel extends ChangeNotifier {
   Flashcard get currentCard => _cards[_currentIndex];
   int get totalCards => _cards.length;
   bool get isFlipped => _cardSide == CardSide.back;
+  bool get isCurrentReviewAgain =>
+      _reviewAgainIds.contains(currentCard.id);
+  bool get canGoBack => _currentIndex > 0;
 
   void _init() {
     _deck = _deckRepository.getDeck();
@@ -47,6 +51,28 @@ class StudyViewModel extends ChangeNotifier {
 
   void rate(int mpEarned) {
     _earnedMp += mpEarned;
+    _advance();
+  }
+
+  void toggleReviewAgain() {
+    final id = currentCard.id;
+    if (_reviewAgainIds.contains(id)) {
+      _reviewAgainIds.remove(id);
+    } else {
+      _reviewAgainIds.add(id);
+    }
+    notifyListeners();
+  }
+
+  void goBack() {
+    if (_currentIndex > 0) {
+      _currentIndex--;
+      _cardSide = CardSide.front;
+      notifyListeners();
+    }
+  }
+
+  void goNext() {
     _advance();
   }
 
